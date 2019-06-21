@@ -33,10 +33,10 @@ const getNews = (($) => {
       const $titleBlock = $('<h2 class="title"></h2>');
       const $descriptionBlock = $('<p class="description"></p>');
 
-      // const dateFull = data[i].publishedAt;
-      // const date = dateFull.substring(0, 10);
+      const dateFull = data[i].publishedAt;
+      const date = dateFull.substring(0, 10);
 
-      $dateBlock.html(data[i].publishedAt);
+      $dateBlock.html(date);
       $titleBlock.html(data[i].title);
       $descriptionBlock.html(data[i].description);
 
@@ -77,7 +77,7 @@ const getNews = (($) => {
     //   sortURL = priority;
     // } else { sortURL = date; }
 
-    const url = newssapi + wordURL + countryUrl + categoryUrl + 'apiKey=f872c395e4394a89b171abde4b0aabe6';
+    const url = newssapi + wordURL + countryUrl + categoryUrl + 'apiKey=ad8622fc80174a46a09ec1425a593b94';
     console.log('URL=' + url);
     getData(url);
   }
