@@ -1,1 +1,107 @@
-// Note: This is an example of components style, so please remove it or re-write it on your styles.
+body {
+  background: #f6f6f6;
+}
+
+input,
+button,
+select {
+  outline: none;
+}
+
+.container {
+  max-width: 1500px;
+  margin: 50px auto;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  background: #f6f6f6;
+  height: calc(100vh - 100px);
+}
+
+.main-heading {
+  font-size: 40px;
+  padding: 15px 0;
+}
+
+.news-container {
+  height: 92%;
+  overflow-y: scroll;
+}
+
+.news-card {
+  background: rgb(171, 202, 226);
+  margin-bottom: 20px;
+  padding: 20px;
+  display: block;
+  text-decoration: none;
+
+  .date {
+    color: #000;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+    color: rgb(65, 65, 65);
+  }
+
+  .description {
+    color: #fff;
+  }
+}
+
+.main-content {
+  width: 70%;
+}
+
+.aside-panel {
+  width: 30%;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .search-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .search-input {
+    border: 0;
+    background: none;
+    border-bottom: 1px solid rgb(171, 202, 226);
+    height: 30px;
+    width: 70%;
+  }
+
+  .submit {
+    background: rgb(171, 202, 226);
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .sort-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    select {
+      width: 150px;
+    }
+  }
+}

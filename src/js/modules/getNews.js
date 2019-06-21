@@ -1,22 +1,13 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable prefer-template */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-useless-concat */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-plusplus */
 const getNews = (($) => {
-  function getFunc() {
-    const url = 'https://newsapi.org/v2/top-headlines?'
-          + 'country=us&'
-          + 'apiKey=f872c395e4394a89b171abde4b0aabe6';
+  function getData(url) {
     const req = new Request(url);
-
-    function appendData(data) {
-      const mainContainer = document.getElementById('myData');
-      console.log(data);
-      for (let i = 0; i < data.length; i++) {
-        const div = document.createElement('div');
-        div.innerHTML = `Title: ${data[i].title}`;
-        mainContainer.appendChild(div);
-      }
-    }
 
     fetch(req)
       .then((response) => {
@@ -25,6 +16,7 @@ const getNews = (($) => {
       })
       .then((data) => {
         const articles = data.articles;
+        console.log(data);
         appendData(articles);
       })
       .catch((err) => {
@@ -32,8 +24,93 @@ const getNews = (($) => {
       });
   }
 
+  function appendData(data) {
+    const $newsContainer = $('.news-container');
+
+    for (let i = 0; i < data.length; i++) {
+      const $newsCard = $(`<a class="news-card" href="${data[i].url}"><div></div></a>`);
+      const $dateBlock = $('<div class="date"></div>');
+      const $titleBlock = $('<h2 class="title"></h2>');
+      const $descriptionBlock = $('<p class="description"></p>');
+
+      // const dateFull = data[i].publishedAt;
+      // const date = dateFull.substring(0, 10);
+
+      $dateBlock.html(data[i].publishedAt);
+      $titleBlock.html(data[i].title);
+      $descriptionBlock.html(data[i].description);
+
+      $newsCard.append($dateBlock).append($titleBlock).append($descriptionBlock);
+      $newsContainer.append($newsCard);
+    }
+  }
+
+  function clearData() {
+    const $newsContainer = $('.news-container');
+    $newsContainer.find('a').remove();
+  }
+
+  function createUrl() {
+    const $country = $('#country');
+    const $category = $('#category');
+    const $search = $('.search-input');
+
+    const countryVal = $country.val();
+    const categoryVal = $category.val();
+    const keyWord = $search.val();
+
+    // const d = new Date();
+    // const strDate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+
+    const wordURL = `q=${keyWord}&`;
+    let countryUrl = `country=${countryVal}&`;
+    let categoryUrl = `category=${categoryVal}&`;
+    // const date = `from=${strDate}&`;
+    // const priority = 'sortBy=popularity&';
+    // let sortURL = '';
+    const newssapi = 'https://newsapi.org/v2/top-headlines?';
+
+    if (categoryVal === 'all') categoryUrl = '';
+    if (countryVal === 'all') countryUrl = '';
+
+    // if (sortVal === 'popularity') {
+    //   sortURL = priority;
+    // } else { sortURL = date; }
+
+    const url = newssapi + wordURL + countryUrl + categoryUrl + 'apiKey=f872c395e4394a89b171abde4b0aabe6';
+    console.log('URL=' + url);
+    getData(url);
+  }
+
+  function sortContent() {
+    const $select = $('select');
+
+    $select.on('change', () => {
+      clearData();
+      createUrl();
+    });
+  }
+
+  function clearInput() {
+    const $search = $('.search-input');
+    $search.val('');
+  }
+
+  function searchByWord() {
+    const searchForm = $('.search-form');
+
+    searchForm.submit((event) => {
+      event.preventDefault();
+      clearData();
+      createUrl();
+      clearInput();
+    });
+  }
+
   function init() {
-    getFunc();
+    createUrl();
+    sortContent();
+    searchByWord();
   }
 
   return { init };

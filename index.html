@@ -1,17 +1,66 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Starter Kit</title>
+  <title>World news</title>
   <link media="all" rel="stylesheet" href="assets/css/vendor.min.css">
   <link media="all" rel="stylesheet" href="assets/css/style.min.css">
 </head>
 
 <body>
-  <div id="myData"></div>
+  <main>
+    <div class="container">
+      <aside class="aside-panel">
+        <div class="options-wrap">
+        <form class="search-form" autocomplete="on">
+        <input class="search-input" name="search" type="search" placeholder="Enter the keyword">
+        <input class="submit" type="submit" value="search">
+        </form>
+        <h3>Sort by</h3>
+        <ul class="sort-list">
+          <li>
+            <span class="sort-category">Country:</span>
+            <select id="country">
+              <option value="us">USA</option>
+              <option value="gb">Great Britain</option>
+              <option value="de">Germany</option>
+              <option value="fr">France</option>
+              <option value="jp">Japan</option>
+              <option value="cn">China</option>
+              <option value="ru">Russia</option>
+            </select></li>
+          <li>
+            <span class="sort-category">Category:</span>
+            <select id="category">
+              <option value="all">All</option>
+              <option value="business">Business</option>
+              <option value="health">Health</option>
+              <option value="science">Science</option>
+              <option value="sport">Sport</option>
+            </select></li>
+
+          <!-- <li>
+            <span class="sort-category">Priority:</span>
+            <select id="sort">
+              <option value="date">Date</option>
+              <option value="popularity">Popularity</option>
+            </select>
+          </li> -->
+        </ul>
+      </div>
+        <div class="img-wrap">
+          <img src="assets/images/imgJour.jpg">
+        </div>
+      </aside>
+      <div class="main-content">
+        <h1 class="main-heading">World News</h1>
+        <div class="news-container">
+        </div>
+      </div>
+    </div>
+  </main>
   <script src="assets/js/vendor.min.js" defer></script>
   <script src="assets/js/app.js" defer></script>
 </body>
