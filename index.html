@@ -10,52 +10,50 @@
 </head>
 
 <body>
-  <main>
-    <div class="container">
-      <aside class="aside-panel">
-        <div class="options-wrap">
-        <form class="search-form" autocomplete="on">
+  <header class="news-header">
+    <div class="flex-container">
+      <a href="" class="logo"><img src="assets/images/news-logo.jpg" alt=""></a>
+      <form class="search-form" autocomplete="on">
         <input class="search-input" name="search" type="search" placeholder="Enter the keyword">
-        <input class="submit" type="submit" value="search">
-        </form>
-        <h3>Sort by</h3>
+      </form>
+    </div>
+    <div class="sort-wrap">
         <ul class="sort-list">
-          <li>
-            <span class="sort-category">Country:</span>
-            <select id="country">
-              <option value="us">USA</option>
-              <option value="gb">Great Britain</option>
-              <option value="de">Germany</option>
-              <option value="fr">France</option>
-              <option value="jp">Japan</option>
-              <option value="cn">China</option>
-              <option value="ru">Russia</option>
-            </select></li>
-          <li>
-            <span class="sort-category">Category:</span>
-            <select id="category">
-              <option value="all">All</option>
-              <option value="business">Business</option>
-              <option value="health">Health</option>
-              <option value="science">Science</option>
-              <option value="sport">Sport</option>
-            </select></li>
+            <li>
+              <span class="sort-category">Country:</span>
+              <select id="country">
+                <option value="us">USA</option>
+                <option value="gb">Great Britain</option>
+                <option value="de">Germany</option>
+                <option value="fr">France</option>
+                <option value="jp">Japan</option>
+                <option value="cn">China</option>
+                <option value="ru">Russia</option>
+              </select></li>
+            <li>
+              <span class="sort-category">Category:</span>
+              <select id="category">
+                <option value="all">All</option>
+                <option value="business">Business</option>
+                <option value="health">Health</option>
+                <option value="science">Science</option>
+                <option value="sport">Sport</option>
+              </select></li>
 
-          <!-- <li>
+            <!-- <li>
             <span class="sort-category">Priority:</span>
             <select id="sort">
               <option value="date">Date</option>
               <option value="popularity">Popularity</option>
             </select>
           </li> -->
-        </ul>
-      </div>
-        <div class="img-wrap">
-          <img src="assets/images/imgJour.jpg">
-        </div>
-      </aside>
+          </ul>
+    </div>
+  </header>
+  <main>
+    <div class="container">
       <div class="main-content">
-        <h1 class="main-heading">World News</h1>
+
         <div class="news-container">
         </div>
       </div>

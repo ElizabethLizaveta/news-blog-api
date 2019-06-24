@@ -4,10 +4,12 @@
 // Feel free with using ES6 here.
 
 import getNews from './modules/getNews';
+import customSelect from './modules/custom-select';
 
 (($) => {
   // When DOM is ready
   $(() => {
+    customSelect.init();
     getNews.init();
   });
 })(jQuery);

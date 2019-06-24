@@ -8,14 +8,103 @@ select {
   outline: none;
 }
 
+input:focus {
+  outline: none !important;
+  border-color: #fff !important;
+}
+
 .container {
-  max-width: 1500px;
-  margin: 50px auto;
-  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  background: #f6f6f6;
+}
+
+.flex-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
   display: flex;
   justify-content: space-between;
-  background: #f6f6f6;
-  height: calc(100vh - 100px);
+  background: #bb3532;
+}
+
+.news-header {
+  padding: 20px;
+  background: #bb3532;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -600px;
+    left: 0;
+    background: #807d7d;
+    width: 350px;
+    height: 600px;
+    border-radius: 0 0 50px 0;
+  }
+}
+
+.logo {
+  display: block;
+  max-height: 50px;
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+input[type="search"] {
+  color: #fff;
+  border: 0;
+  background: none;
+  border-bottom: 1px solid #fff;
+  height: 30px;
+
+  &::placeholder {
+    color: #fff;
+  }
+}
+
+.sort-wrap {
+  position: absolute;
+  bottom: -72px;
+  right: 0;
+  background: #807d7d;
+  width: 40%;
+  height: 72px;
+  border-radius: 0 0 0 50px;
+}
+
+.sort-category {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  color: #fff;
+}
+
+.sort-list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0 30px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  select {
+    width: 150px;
+  }
+
+  .selectric {
+    width: 200px;
+  }
 }
 
 .main-heading {
@@ -24,19 +113,24 @@ select {
 }
 
 .news-container {
-  height: 92%;
-  overflow-y: scroll;
+  height: 300px;
+  position: relative;
+}
+
+.page {
+  display: flex;
+  justify-content: space-between;
 }
 
 .news-card {
-  background: rgb(171, 202, 226);
-  margin-bottom: 20px;
-  padding: 20px;
+  background: rgb(71, 72, 73);
+  padding: 25px;
   display: block;
   text-decoration: none;
+  width: 48%;
 
   .date {
-    color: #000;
+    color: rgb(255, 0, 0);
     font-weight: bold;
     font-size: 12px;
     margin-bottom: 15px;
@@ -44,64 +138,92 @@ select {
 
   .title {
     font-size: 20px;
-    color: rgb(65, 65, 65);
+    color: #fff;
   }
 
   .description {
-    color: #fff;
+    color: rgb(206, 206, 206);
   }
 }
 
 .main-content {
-  width: 70%;
+  width: 100%;
+  margin-top: 100px;
 }
 
-.aside-panel {
-  width: 30%;
-  padding-right: 50px;
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #f6f6f6;
+  z-index: 0;
+
+  &-active {
+    z-index: 2;
+  }
+}
+
+.pagination {
+  width: 40%;
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  transform: translateX(-50%);
+  z-index: 5;
 
-  .search-form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-  }
+  .dot {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    display: none;
+    cursor: pointer;
 
-  .search-input {
-    border: 0;
-    background: none;
-    border-bottom: 1px solid rgb(171, 202, 226);
-    height: 30px;
-    width: 70%;
-  }
-
-  .submit {
-    background: rgb(171, 202, 226);
-    color: #fff;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-
-    &:hover {
-      opacity: 0.7;
+    &-active {
+      color: rgb(255, 0, 0);
     }
-  }
 
-  .sort-list {
-    list-style: none;
-    padding: 0;
-
-    li {
-      margin-bottom: 20px;
+    &-visible {
       display: flex;
-      justify-content: space-between;
-    }
-
-    select {
-      width: 150px;
+      align-items: center;
     }
   }
+
+  .dots {
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+  }
+
+  .dots-visible {
+    display: none;
+  }
+}
+
+i {
+  border: solid rgb(255, 0, 0);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+}
+
+.right {
+  right: 0;
+  transform: rotate(-45deg) translateY(-50%);;
+}
+
+.left {
+  left: 0;
+  transform: rotate(135deg) translateY(50%);
 }
