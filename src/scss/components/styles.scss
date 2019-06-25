@@ -113,7 +113,7 @@ input[type="search"] {
 }
 
 .news-container {
-  height: 300px;
+  min-height: 300px;
   position: relative;
 }
 
@@ -148,7 +148,7 @@ input[type="search"] {
 
 .main-content {
   width: 100%;
-  margin-top: 100px;
+  margin-top: 15%;
 }
 
 .page {
@@ -168,7 +168,7 @@ input[type="search"] {
 .pagination {
   width: 40%;
   position: absolute;
-  bottom: -50px;
+  bottom: -110px;
   left: 50%;
   display: flex;
   justify-content: center;
@@ -177,8 +177,9 @@ input[type="search"] {
 
   .dot {
     display: block;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
     margin: 5px;
     display: none;
     cursor: pointer;
@@ -196,21 +197,22 @@ input[type="search"] {
   .dots {
     display: flex;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     margin: 5px;
   }
 
-  .dots-visible {
+  .element-hidden {
     display: none;
   }
 }
 
 i {
   border: solid rgb(255, 0, 0);
-  border-width: 0 3px 3px 0;
+  border-width: 0 4px 4px 0;
   display: inline-block;
-  padding: 3px;
+  padding: 6px;
+  font-size: 30px;
 }
 
 .arrow {

@@ -14,6 +14,7 @@ const getNews = (($) => {
   let $newsContainer;
   let pageNumber;
   let count = 2;
+  const iterator = 2;
 
   function getData(url) {
     const req = new Request(url);
@@ -65,7 +66,7 @@ const getNews = (($) => {
     if (dataLength > 4) {
       $newsContainer.append('<div class="pagination"></div>');
       $pagination = $newsContainer.find('.pagination');
-      $pagination.append('<i class="arrow right"></i>').append('<i class="arrow left dots-visible"></i>');
+      $pagination.append('<i class="arrow right"></i>').append('<i class="arrow left element-hidden"></i>');
 
       for (let i = 0; i < pageNumber; i++) {
         // eslint-disable-next-line no-const-assign
@@ -78,28 +79,39 @@ const getNews = (($) => {
     }
   }
 
-  function displayPagination() {
+  function paginationDotsInit() {
+    $pagination = $('.pagination');
     $pagination.find('span:eq(0)').addClass('dot-visible');
     $pagination.find('span:eq(1)').addClass('dot-visible');
+  }
+
+  function displayPagination() {
+    paginationDotsInit();
     const ar = $pagination.find('.arrow.right');
     const al = $pagination.find('.arrow.left');
     const last = $pagination.find('span').last();
 
     last.click(() => {
-      count = pageNumber - 2;
+      count = pageNumber - iterator;
       $pagination.find('.dot').removeClass('dot-visible');
       $pagination.find('.dot').removeClass('dot-active');
       $('.page').removeClass('page-active');
-      $pagination.find(`span:eq(${count})`).addClass('dot-visible').addClass('dot-active');
+      $pagination.find(`span:eq(${count})`).addClass('dot-visible');
       arrayPages[count].addClass('page-active');
       $pagination.find(`span:eq(${count + 1})`).addClass('dot-visible');
-      $('.dots').addClass('dots-visible');
-      ar.addClass('dots-visible');
-      al.removeClass('dots-visible');
+      $('.dots').addClass('element-hidden');
+      ar.addClass('element-hidden');
+      al.removeClass('element-hidden');
+      console.log('MYCOUNT' + count);
+
+      if (pageNumber % 2 !== 0) {
+        count += 1;
+      }
     });
 
     ar.click(() => {
-      al.removeClass('dots-visible');
+      console.log('right' + count);
+      al.removeClass('element-hidden');
       $pagination.find('.dot').removeClass('dot-visible');
       $pagination.find('.dot').removeClass('dot-active');
       $('.page').removeClass('page-active');
@@ -107,18 +119,19 @@ const getNews = (($) => {
       $pagination.find(`span:eq(${count})`).addClass('dot-visible').addClass('dot-active');
       arrayPages[count].addClass('page-active');
       $pagination.find(`span:eq(${count + 1})`).addClass('dot-visible');
-      count += 2;
-      if (count === pageNumber) {
-        $('.dots').addClass('dots-visible');
-        ar.addClass('dots-visible');
-        count -= 2;
+      count += iterator;
+
+      if ((count === pageNumber) || (count === pageNumber + 1)) {
+        $('.dots').addClass('element-hidden');
+        ar.addClass('element-hidden');
+        count -= iterator;
       }
     });
 
     al.click(() => {
-      ar.removeClass('dots-visible');
-      console.log(count);
-      count -= 2;
+      count -= iterator;
+      console.log('left ' + count);
+      ar.removeClass('element-hidden');
       $pagination.find('.dot').removeClass('dot-visible');
       $pagination.find('.dot').removeClass('dot-active');
       $('.page').removeClass('page-active');
@@ -127,10 +140,11 @@ const getNews = (($) => {
       arrayPages[count].addClass('page-active');
       $pagination.find(`span:eq(${count + 1})`).addClass('dot-visible');
 
-      $('.dots').removeClass('dots-visible');
+      $('.dots').removeClass('element-hidden');
 
       if (count === 0) {
-        al.addClass('dots-visible');
+        al.addClass('element-hidden');
+        count += iterator;
       }
     });
 
@@ -197,9 +211,6 @@ const getNews = (($) => {
     const countryVal = $country.val();
     const categoryVal = $category.val();
     const keyWord = $search.val();
-
-    // const d = new Date();
-    // const strDate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
 
     let wordURL = `q=${keyWord}&`;
     const countryUrl = `country=${countryVal}&`;
