@@ -194,13 +194,7 @@ input[type="search"] {
     }
   }
 
-  .dots {
-    display: flex;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    margin: 5px;
-  }
+
 
   .element-hidden {
     display: none;
@@ -228,4 +222,12 @@ i {
 .left {
   left: 0;
   transform: rotate(135deg) translateY(50%);
+}
+
+.dots-last {
+  display: flex;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  margin: 5px;
 }
