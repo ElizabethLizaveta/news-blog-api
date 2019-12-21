@@ -172,6 +172,7 @@ input[type="search"] {
   left: 50%;
   display: flex;
   justify-content: center;
+  align-items: center;
   transform: translateX(-50%);
   z-index: 5;
 
@@ -194,7 +195,9 @@ input[type="search"] {
     }
   }
 
-
+  .dots {
+    width: 60px;
+  }
 
   .element-hidden {
     display: none;
@@ -216,7 +219,7 @@ i {
 
 .right {
   right: 0;
-  transform: rotate(-45deg) translateY(-50%);;
+  transform: rotate(-45deg) translateY(-50%);
 }
 
 .left {
